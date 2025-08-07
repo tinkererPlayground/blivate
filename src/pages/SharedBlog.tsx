@@ -34,7 +34,7 @@ const createPublicService = () => {
 export const SharedBlog = () => {
   const [searchParams] = useSearchParams();
   const filename = searchParams.get('name');
-  const rawUrl = filename ? `https://raw.githubusercontent.com/fabrichgit/lovable-blog-posts/refs/heads/main/blogs/${filename}` : null;
+  const rawUrl = filename ? `https://raw.githubusercontent.com/fabrichgit/blivate-blog-posts/refs/heads/main/blogs/${filename}` : null;
   const [post, setPost] = useState<BlogPost | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string>('');
@@ -203,7 +203,7 @@ export const SharedBlog = () => {
         {/* Footer */}
         <div className="max-w-4xl mx-auto mt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            Partagé via Lovable Blog Platform
+            Partagé via Blivate Blog Platform
           </p>
         </div>
       </div>

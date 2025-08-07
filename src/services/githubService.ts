@@ -39,7 +39,7 @@ interface GitHubRepository {
 export class GitHubService {
   private token: string;
   private owner: string;
-  private repo: string = 'lovable-blog-posts';
+  private repo: string = 'blivate-blog-posts';
 
   constructor(token: string) {
     this.token = token;
@@ -83,7 +83,7 @@ export class GitHubService {
         method: 'POST',
         body: JSON.stringify({
           name: this.repo,
-          description: 'Blog posts créés avec Lovable Blog Platform',
+          description: 'Blog posts créés avec Blivate Blog Platform',
           private: false,
           auto_init: true,
         }),
