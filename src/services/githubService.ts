@@ -336,7 +336,9 @@ updatedAt: "${new Date().toISOString()}"
 
   async createShareLink(blogId: string): Promise<string> {
     // Return the shareable URL with filename format
-    return `${window.location.origin}/share?name=${blogId}.md`;
+    const shareUrl = `${window.location.origin}/share?name=${blogId}.md`;
+    console.log('createShareLink called with blogId:', blogId, 'returning:', shareUrl);
+    return shareUrl;
   }
 
   generatePublicLink(linkId: string): string {
