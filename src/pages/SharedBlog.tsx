@@ -33,7 +33,7 @@ const createPublicService = () => {
 
 export const SharedBlog = () => {
   const [searchParams] = useSearchParams();
-  const filename = searchParams.get('name');
+  const filename = searchParams.get('share');
   const rawUrl = filename ? `https://raw.githubusercontent.com/fabrichgit/blivate-blog-posts/refs/heads/main/blogs/${filename}` : null;
   const [post, setPost] = useState<BlogPost | null>(null);
   const [isLoading, setIsLoading] = useState(true);

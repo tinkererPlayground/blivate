@@ -3,6 +3,7 @@ import { GitHubAuth } from '@/components/Auth/GitHubAuth';
 import { BlogDashboard } from '@/components/Blog/BlogDashboard';
 import { BlogEditor } from '@/components/Blog/BlogEditor';
 import { BlogViewer } from '@/components/Blog/BlogViewer';
+import { SharedBlog } from './SharedBlog';
 import { GitHubService } from '@/services/githubService';
 
 type AppState = 'login' | 'dashboard' | 'editor' | 'viewer';
@@ -20,8 +21,17 @@ const Index = () => {
   const [viewingPostId, setViewingPostId] = useState<string | null>(null);
   const [githubService, setGithubService] = useState<GitHubService | null>(null);
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
+  const [isSharedView, setIsSharedView] = useState(false);
 
   useEffect(() => {
+    // Check if we're viewing a shared blog
+    const urlParams = new URLSearchParams(window.location.search);
+    const shareParam = urlParams.get('share');
+    if (shareParam) {
+      setIsSharedView(true);
+      return;
+    }
+
     // Check if user is already authenticated
     const token = localStorage.getItem('github_token');
     if (token) {
@@ -82,6 +92,11 @@ const Index = () => {
     setViewingPostId(null);
     setAppState('dashboard');
   };
+
+  // Check if we should show shared view
+  if (isSharedView) {
+    return <SharedBlog />;
+  }
 
   // Render based on current state
   switch (appState) {
